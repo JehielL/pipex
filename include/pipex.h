@@ -29,6 +29,7 @@ void execute_command(const char *cmd, int input_fd, int output_fd);
 // Funciones de manejo de errores
 void handle_error(const char *msg);
 void print_error(const char *format, ...);
+void free_resources(t_pipex *pipex);
 
 // Funciones para inicializar y liberar recursos
 void ft_init_pipex(t_pipex *pipex);
@@ -38,5 +39,10 @@ void exec_pipex(t_pipex *pipex);
 void init_command_storage(t_pipex *pipex);
 void process_command(t_pipex *pipex, char *command, char **envp, int index);
 char *find_command_path(const char *cmd, char **envp);
+void free_command_storage(t_pipex *pipex);
+char *get_path_env(char **envp);
+char *check_command_in_paths(char **paths, const char *command);
+
+
 
 #endif // PIPEX_H

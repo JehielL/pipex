@@ -6,7 +6,7 @@
 /*   By: jlinarez <jlinarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:04:44 by jlinarez          #+#    #+#             */
-/*   Updated: 2024/08/27 01:13:26 by jlinarez         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:22:13 by jlinarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@ void exec_pipex(t_pipex *pipex)
 
     if (pipe(pipe_fds) == -1)
         handle_error("Failed to create pipe");
-
     pid = fork();
-    
     if (pid == -1)
         handle_error("Fork Failed");
-
     if (pid == 0)
     {
         dup2(pipex->in_fd, STDIN_FILENO);
@@ -41,7 +38,6 @@ void exec_pipex(t_pipex *pipex)
     }
 }
 
-
 void ft_init_pipex(t_pipex *pipex)
 {
     pipex->in_fd = -1;
@@ -53,9 +49,29 @@ void ft_init_pipex(t_pipex *pipex)
     pipex->cmd_count = 0;
 }
 
-void free_resources(int *pipes, int pipe_count)
+void free_resources(t_pipex *pipex)
 {
-    for (int i = 0; i < pipe_count; i++)
-        close(pipes[i]);
-    free(pipes);
+    int i;
+
+    if (pipex->in_fd != -1)
+        close(pipex->in_fd);
+    if (pipex->out_fd != -1)
+        close(pipex->out_fd);
+    
+    // Free each command's args and paths
+    if (pipex->cmd_args)
+    {
+        i = 0;
+        while (i < pipex->cmd_count)
+        {
+            if (pipex->cmd_args[i])
+                free_2d_array(pipex->cmd_args[i]); // free the args array for each command
+            i++;
+        }
+        free(pipex->cmd_args); // free the outer array
+    }
+    if (pipex->cmd_paths)
+        free_2d_array(pipex->cmd_paths); // free the paths array
 }
+
+
