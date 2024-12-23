@@ -6,7 +6,7 @@
 /*   By: jlinarez <jlinarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:58:24 by jlinarez          #+#    #+#             */
-/*   Updated: 2024/12/23 14:58:29 by jlinarez         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:01:28 by jlinarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_pipex
     char    **cmd_args;     // Argumentos de los comandos
     char    **commands;     // Lista de comandos
     char    **envp;         // Variables de entorno
+    char    outfile;
+    char    infile;
 }   t_pipex;
 
 // Funciones principales
