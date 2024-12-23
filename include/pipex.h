@@ -1,17 +1,17 @@
 #ifndef PIPEX_H
 #define PIPEX_H
 
-#include <stdio.h>   // Para fprintf(), stderr
-#include <stdlib.h>  // Para malloc(), free(), exit()
-#include <unistd.h>  // Para fork(), pipe(), dup(), dup2(), execve(), close(), read(), write(), unlink()
-#include <fcntl.h>   // Para open()
-#include <string.h>  // Para strerror()
-#include <sys/wait.h> // Para wait(), waitpid()
-#include <errno.h>   // Para errno
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <errno.h>
 #include "../utils/libft/libft.h"
 #include "../utils/ft_printf_42/ft_printf.h"
 
-// Estructura para almacenar información sobre el proceso
+
 typedef struct s_pipex
 {
     int in_fd;               // Descriptor de archivo de entrada
