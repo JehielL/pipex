@@ -1,0 +1,9 @@
+total 84
+drwxrwxr-x 2 coordinacion-mgst coordinacion-mgst  4096 dic 14 12:56 include
+-rw-rw-r-- 1 coordinacion-mgst coordinacion-mgst  2080 dic 14 12:56 Makefile
+-rw-r--r-- 1 coordinacion-mgst coordinacion-mgst     0 dic 14 13:52 outfile
+-rwxrwxr-x 1 coordinacion-mgst coordinacion-mgst 64512 dic 14 13:52 pipex
+-rw-rw-r-- 1 coordinacion-mgst coordinacion-mgst    36 dic 14 13:52 prueba.txt
+drwxrwxr-x 2 coordinacion-mgst coordinacion-mgst  4096 dic 14 13:52 src
+-rw-rw-r-- 1 coordinacion-mgst coordinacion-mgst     0 dic 14 13:53 temp_output
+drwxrwxr-x 4 coordinacion-mgst coordinacion-mgst  4096 dic 14 12:56 utils
