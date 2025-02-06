@@ -11,17 +11,18 @@
 #include "../utils/libft/libft.h"
 #include "../utils/ft_printf_42/ft_printf.h"
 
-// Estructura para almacenar información sobre el proceso
 typedef struct s_pipex
 {
-    int in_fd;               // Descriptor de archivo de entrada
-    int out_fd;              // Descriptor de archivo de salida
-    int here_doc;            // Flag para indicar si se usa here_doc
-    int is_invalid_infile;   // Flag para indicar si el archivo de entrada es inválido
-    char **cmd_paths;        // Matriz de rutas de comandos
-    char ***cmd_args;        // Matriz de argumentos de comandos
-    int cmd_count;           // Contador de comandos
-} t_pipex;
+    int     in_fd;
+    int     out_fd;
+    char    **cmd_paths;
+    char    ***cmd_args;
+    int     cmd_count;
+    int     here_doc;
+    int     is_invalid_infile;
+    char    **envp; 
+}   t_pipex;
+
 
 // Funciones para manejar la ejecución de comandos
 void execute_command(const char *cmd, int input_fd, int output_fd);
