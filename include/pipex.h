@@ -21,7 +21,6 @@
 # include <sys/wait.h>
 # include <errno.h>
 
-<<<<<<< HEAD
 typedef struct s_pipex
 {
     int     in_fd;
@@ -34,29 +33,10 @@ typedef struct s_pipex
     char    **envp; 
 }   t_pipex;
 
-=======
-// Estructura principal del proyecto
-typedef struct s_pipex
-{
-    int     in_fd;          // Descriptor de archivo de entrada
-    int     out_fd;         // Descriptor de archivo de salida
-    int     fd[2];          // Pipe para redirección
-    int     prev_fd;        // Descriptor de archivo del comando anterior
-    int     cmd_count;      // Número de comandos
-    int     cmd_index;      // Índice del comando actual
-    char    **cmd_paths;    // Rutas de los comandos
-    char    **cmd_args;     // Argumentos de los comandos
-    char    **commands;     // Lista de comandos
-    char    **envp;         // Variables de entorno
-    char    outfile;
-    char    infile;
-}   t_pipex;
->>>>>>> 01dc7036ef6ec7d95e41f960c9be221573b152ce
 
 // Funciones principales
 void    ft_init_pipex(t_pipex *pipex);
-void    process_commands(t_pipex *pipex);
-void    handle_here_doc(int argc, char **argv, char **envp);
+void process_command(t_pipex *pipex, char *command, char **envp, int index);
 void    parse_commands(t_pipex *pipex, char **argv, char **envp);
 void    execute_command_with_path(char *command, t_pipex *pipex);
 
@@ -64,6 +44,8 @@ void    execute_command_with_path(char *command, t_pipex *pipex);
 void    handle_error(const char *msg);
 void    print_error(const char *format, ...);
 void    display_argument_error(void);
+void    exec_pipex(t_pipex *pipex);
+
 
 // Gestión de recursos
 void    clean_up(char **args, char *path);

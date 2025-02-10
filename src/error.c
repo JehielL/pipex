@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
+#include "../utils/ft_printf_42/ft_printf.h"
 
 void	handle_error(const char *msg)
 {

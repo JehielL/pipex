@@ -29,7 +29,7 @@ void handle_here_doc(int argc, char **argv, char **envp)
     pipex.commands = &argv[3];
     pipex.envp = envp;
     pipex.cmd_index = 0;
-    process_commands(&pipex);
+    process_command(&pipex, pipex.commands[pipex.cmd_index], pipex.envp, pipex.cmd_index);
     close(here_doc_pipe[0]);
 }
 static void read_from_stdin_and_write_to_pipe(char **argv, int fd[2])
