@@ -1,5 +1,5 @@
 # Nombre del ejecutable
-NAME        = pipex
+NAME        = Pipex
 
 # Compilador y flags
 CC          = gcc
@@ -27,37 +27,37 @@ all:        $(NAME)
 
 # Construir el ejecutable
 $(NAME):    $(OBJ)
-		@echo " [ .. ] | Compilando libft.."
+		@echo " [ .. ] | Making libft.."
 		@make -C $(LFT_DIR) > /dev/null
-		@echo " $(GREEN)[ OK ] $(CHECK_MARK) libft compilado con éxito!$(RESET)"
+		@echo " $(GREEN)[ OK ] $(CHECK_MARK) libft compiled success!$(RESET)"
 		@$(CC) $(CFLAGS) -o $@ $^ $(LIB)
-		@echo " $(GREEN)[ OK ] $(CHECK_MARK) Ejecutable $(NAME) construido con éxito!$(RESET)"
+		@echo " $(GREEN)[ OK ] $(CHECK_MARK) Executable $(NAME) Build with success!$(RESET)"
 
 # Regla para compilar archivos fuente en objetos
 src/%.o: src/%.c
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@ > /dev/null
-	@echo " $(GREEN)[ OK ] $(CHECK_MARK) Compilado: $<$(RESET)"
+	@echo " $(GREEN)[ OK ] $(CHECK_MARK) Compiled: $<$(RESET)"
 
 $(FT_PRINTF)/%.o: $(FT_PRINTF)/%.c
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@ > /dev/null
-	@echo " $(GREEN)[ OK ] $(CHECK_MARK) Compilado: $<$(RESET)"
+	@echo " $(GREEN)[ OK ] $(CHECK_MARK) Compiled: $<$(RESET)"
 
 # Limpiar archivos objetos y ejecutable
 clean:
 		@make -C $(LFT_DIR) clean > /dev/null
 		@rm -f $(OBJ)
-		@echo " $(GREEN)[ OK ] $(CHECK_MARK) Archivos objeto eliminados.$(RESET)"
+		@echo " $(GREEN)[ OK ] $(CHECK_MARK) Obj files deleted.$(RESET)"
 
 fclean: clean
 		@rm -f $(NAME)
-		@echo " $(RED)[ OK ] $(CHECK_MARK) Ejecutable $(NAME) eliminado.$(RESET)"
+		@echo " $(RED)[ OK ] $(CHECK_MARK) $(NAME) Deleted.$(RESET)"
 
 # Recompilar todo
 re: fclean all
 
 # Ejecutar el programa con Valgrind
 valgrind: all
-		@echo " [ .. ] | Ejecutando el programa con Valgrind.."
+		@echo " [ .. ] | Checking with Valgrind.."
 		@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./$(NAME)
 
 .PHONY: all clean fclean re valgrind
